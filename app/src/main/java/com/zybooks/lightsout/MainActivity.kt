@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var game: LightsOutGame
     private lateinit var lightGridLayout: GridLayout
-    private var lightOnColor = 1
+    private var lightOnColor = 0
     private var lightOffColor = 0
 
 
