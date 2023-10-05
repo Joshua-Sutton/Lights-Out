@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var game: LightsOutGame
     private lateinit var lightGridLayout: GridLayout
-    private var lightOnColor = 0
+    private var lightOnColor = 1
     private var lightOffColor = 0
 
 
@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity() {
 
             // Update button colors after cheating
             setButtonColors()
-
+            if (game.isGameOver) {
+                Toast.makeText(this, R.string.congrats, Toast.LENGTH_SHORT).show()
+            }
             // Return true to indicate that the long click event is consumed
             true
         }
@@ -81,8 +83,10 @@ class MainActivity : AppCompatActivity() {
 
             if (game.isLightOn(row, col)) {
                 gridButton.setBackgroundColor(lightOnColor)
+                gridButton.contentDescription = getString(R.string.light_on)
             } else {
                 gridButton.setBackgroundColor(lightOffColor)
+                gridButton.contentDescription = getString(R.string.light_off)
             }
         }
     }
