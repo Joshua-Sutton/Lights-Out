@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private var lightOnColor = 0
     private var lightOffColor = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +26,19 @@ class MainActivity : AppCompatActivity() {
         // Add the same click handler to all grid buttons
         for (gridButton in lightGridLayout.children) {
             gridButton.setOnClickListener(this::onLightButtonClick)
+        }
+
+        // Set the long click listener for the top-left button
+        val topLeftButton = lightGridLayout.getChildAt(0) // Assuming the top-left button is at index 0
+        topLeftButton.setOnLongClickListener {
+            // Cheat by turning all lights off
+            game.turnAllLightsOff()
+
+            // Update button colors after cheating
+            setButtonColors()
+
+            // Return true to indicate that the long click event is consumed
+            true
         }
 
         lightOnColor = ContextCompat.getColor(this, R.color.yellow)

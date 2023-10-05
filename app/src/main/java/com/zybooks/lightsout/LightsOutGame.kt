@@ -8,6 +8,14 @@ class LightsOutGame {
 
     private val lightsGrid = Array(GRID_SIZE) { Array(GRID_SIZE) { true } }
 
+    fun turnAllLightsOff() {
+        for (row in 0 until GRID_SIZE) {
+            for (col in 0 until GRID_SIZE) {
+                lightsGrid[row][col] = false
+            }
+        }
+    }
+
     fun newGame() {
         for (row in 0 until GRID_SIZE) {
             for (col in 0 until GRID_SIZE) {
