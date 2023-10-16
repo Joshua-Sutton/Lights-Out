@@ -1,6 +1,8 @@
 package com.zybooks.lightsout
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.GridLayout
 import android.widget.Toast
@@ -8,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 
-
+const val GAME_STATE = "gameState"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var game: LightsOutGame
@@ -48,6 +50,26 @@ class MainActivity : AppCompatActivity() {
 
         game = LightsOutGame()
         startGame()
+
+        if (savedInstanceState == null) {
+            startGame()
+        } else {
+            game.state = savedInstanceState.getBooleanArray(GAME_STATE)!!
+            setButtonColors()
+        }
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.appbar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBooleanArray(GAME_STATE, game.state)
     }
 
     private fun startGame() {
@@ -91,7 +113,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun onNewGameClick(view: View) {
-        startGame()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Determine which menu option was selected
+        return when (item.itemId) {
+            R.id.newGame -> {
+                // Add selected
+                startGame()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

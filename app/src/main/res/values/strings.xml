@@ -2,6 +2,6 @@
     <string name="app_name">Lights Out</string>
     <string name="new_game">New Game</string>
     <string name="congrats">Congratulations!</string>
-    <string name="light_on">Lights on</string>
-    <string name="light_off">Lights off</string>
+    <string name="light_on">Light on</string>
+    <string name="light_off">Light off</string>
 </resources>

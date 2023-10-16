@@ -55,4 +55,31 @@ class LightsOutGame {
             }
             return true
         }
+
+    var state: BooleanArray
+        get() {
+            // Return Boolean array
+            val gameBoardArray1 = BooleanArray(9)
+            var index = 0
+            for (row in 0 until GRID_SIZE) {
+                for (col in 0 until GRID_SIZE) {
+                    gameBoardArray1[index] = lightsGrid[row][col]
+                    index++
+                }
+            }
+            return gameBoardArray1
+        }
+        set(value) {
+            var index = 0
+            for (row in 0 until GRID_SIZE) {
+                for (col in 0 until GRID_SIZE) {
+                    /*if(lightsGrid[row][col] == value[index])
+                    {
+                        lightsGrid[row][col] = value[index] == true
+                    }*/
+                    lightsGrid[row][col] = value[index]
+                    index++
+                }
+            }
+        }
 }
