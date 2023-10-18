@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.newGame -> {
                 val dialog = PlayAgainDialogFragment(this::startGame)
-                dialog.show(supportFragmentManager, "warningDialog")
+                dialog.show(supportFragmentManager, "PlayAgainDialogFragment")
                 true
             }
             else -> super.onOptionsItemSelected(item)

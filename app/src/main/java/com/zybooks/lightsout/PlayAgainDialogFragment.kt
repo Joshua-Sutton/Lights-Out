@@ -15,7 +15,6 @@ class PlayAgainDialogFragment(val negBtnFun: () -> Unit) : DialogFragment() {
                 builder.setMessage("Did you cheat?")
                 builder.setPositiveButton("Yes", null)
                 builder.setNegativeButton("No") { dialog, id ->
-                    // ToDo: COmplete
                     negBtnFun()
                 }
                 return builder.create()
