@@ -5,15 +5,19 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 
-class PlayAgainDialogFragment : DialogFragment() {
+class PlayAgainDialogFragment(val negBtnFun: () -> Unit) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         class WarningDialogFragment : DialogFragment() {
             override fun onCreateDialog(savedInstanceState: Bundle?)
                     : Dialog {
                 val builder = AlertDialog.Builder(requireActivity())
-                builder.setTitle(R.string.warning)
-                builder.setMessage(R.string.warning_message)
-                builder.setPositiveButton(R.string.ok, null)
+                builder.setTitle("Cheat?")
+                builder.setMessage("Did you cheat?")
+                builder.setPositiveButton("Yes", null)
+                builder.setNegativeButton("No") { dialog, id ->
+                    // ToDo: COmplete
+                    negBtnFun()
+                }
                 return builder.create()
             }
         }

@@ -1,14 +1,17 @@
 package com.zybooks.lightsout
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.GridLayout
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
+import androidx.fragment.app.DialogFragment
 
 const val GAME_STATE = "gameState"
 class MainActivity : AppCompatActivity() {
@@ -117,8 +120,8 @@ class MainActivity : AppCompatActivity() {
         // Determine which menu option was selected
         return when (item.itemId) {
             R.id.newGame -> {
-                // Add selected
-                startGame()
+                val dialog = PlayAgainDialogFragment(this::startGame)
+                dialog.show(supportFragmentManager, "warningDialog")
                 true
             }
             else -> super.onOptionsItemSelected(item)
